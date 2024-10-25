@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Mall - Shops</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <%- include('partials/header') %>
+
+    <main>
+        <section>
+            <div class="container">
+                <h2>Our Shops</h2>
+                <input type="text" id="shop-search" placeholder="Search for shops...">
+                <ul id="shop-list">
+                    <li class="shop-item">Shop 1: Clothing</li>
+                    <li class="shop-item">Shop 2: Electronics</li>
+                    <li class="shop-item">Shop 3: Groceries</li>
+                    <!-- Добавьте больше магазинов здесь -->
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

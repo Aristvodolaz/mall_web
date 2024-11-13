@@ -18,7 +18,7 @@ app.get('/shops', (req, res) => {
     res.render('shops');
 });
 
-app.get('/events', (req, res) => {
+app.get('/entertainment', (req, res) => {
     res.render('events');
 });
 

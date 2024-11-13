@@ -5,26 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Mall - Events</title>
     <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <%- include('partials/header') %>
+    <!-- Header with Background Image -->
+    <header class="header">
+        <div class="overlay">
+            <nav class="breadcrumb">
+                <a href="#">Главная</a> > <span>События</span>
+            </nav>
+            <h1 class="title">СОБЫТИЯ</h1>
+            <p class="event-count">5 событий</p>
+            <div class="search-container">
+                <input type="text" id="event-search" class="search-bar" placeholder="Поиск события">
+                <button class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+                <select class="category-select">
+                    <option>Выбрать категорию</option>
+                    <option>Скидки</option>
+                    <option>Концерты</option>
+                    <option>Открытия магазинов</option>
+                    <!-- Add more categories as needed -->
+                </select>
+                <button class="sort-button">
+                    А-Я <i class="fas fa-sort-alpha-down"></i>
+                </button>
+                <div class="view-toggle">
+                    <button class="grid-view active"><i class="fas fa-th"></i></button>
+                    <button class="list-view"><i class="fas fa-list"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
 
+    <!-- Main Content with Event Cards -->
     <main>
-        <section>
+        <section class="event-section">
             <div class="container">
-                <h2>Upcoming Events</h2>
-                <ul>
-                    <li>Event 1: Summer Sale</li>
-                    <li>Event 2: Concert at the Mall</li>
-                    <li>Event 3: New Store Opening</li>
-                    <!-- Добавьте больше событий здесь -->
+                <ul class="event-list" id="event-list">
+                    <!-- Each event card -->
+                    <li class="event-item">
+                        <img src="/images/event1.jpg" alt="Summer Sale" class="event-image">
+                        <h3 class="event-name">Summer Sale</h3>
+                        <p class="event-label">СКОРО</p>
+                        <p class="event-category">Скидки</p>
+                        <button class="view-details">Подробнее</button>
+                    </li>
+                    <li class="event-item">
+                        <img src="/images/event2.jpg" alt="Concert at the Mall" class="event-image">
+                        <h3 class="event-name">Concert at the Mall</h3>
+                        <p class="event-label">СКОРО</p>
+                        <p class="event-category">Концерты</p>
+                        <button class="view-details">Подробнее</button>
+                    </li>
+                    <li class="event-item">
+                        <img src="/images/event3.jpg" alt="New Store Opening" class="event-image">
+                        <h3 class="event-name">New Store Opening</h3>
+                        <p class="event-label">ОТКРЫТИЕ</p>
+                        <p class="event-category">Открытия магазинов</p>
+                        <button class="view-details">Подробнее</button>
+                    </li>
+                    <!-- Add more event cards as needed -->
                 </ul>
             </div>
         </section>
     </main>
+    
 
     <!-- Footer -->
     <%- include('partials/footer') %>
+
+    <script src="/js/app.js"></script>
 </body>
 </html>

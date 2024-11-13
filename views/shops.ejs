@@ -3,30 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Mall - Shops</title>
+    <title>Shopping Mall - Our Shops</title>
     <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <%- include('partials/header') %>
+    <!-- Header Section with Background Image -->
+    <header class="header">
+        <div class="overlay">
+            <nav class="breadcrumb">
+                <a href="#">Главная</a> > <span>Магазины</span>
+            </nav>
+            <h1 class="title">Магазины</h1>
+            <p class="shop-count">396 магазинов</p>
+            <div class="search-container">
+                <input type="text" id="shop-search" class="search-bar" placeholder="Поиск магазина">
+                <button class="search-button">
+                    <i class="fas fa-search"></i>
+                </button>
+                <!-- Category Filter Dropdown -->
+                <select id="category-select" class="category-select">
+                    <option value="all">Выбрать категорию</option>
+                    <option value="clothing">Одежда</option>
+                    <option value="beauty">Красота и здоровье</option>
+                    <option value="electronics">Электроника</option>
+                    <option value="groceries">Продукты</option>
+                    <!-- Add more categories as needed -->
+                </select>
+                <!-- Floor Filter Dropdown -->
+                <select id="floor-select" class="floor-select">
+                    <option value="all">Этаж</option>
+                    <option value="1">1 этаж</option>
+                    <option value="2">2 этаж</option>
+                    <option value="3">3 этаж</option>
+                    <!-- Add more floors as needed -->
+                </select>
+                <label class="tax-free">
+                    <input type="checkbox" id="tax-free-checkbox"> TAX FREE %
+                </label>
+                <button class="sort-button">
+                    А-Я <i class="fas fa-sort-alpha-down"></i>
+                </button>
+                          
+            </div>
+        </div>
+    </header>
 
+    <!-- Main Content with Shop List -->
     <main>
-        <section>
+        <section class="shop-section">
             <div class="container">
-                <h2>Our Shops</h2>
-                <input type="text" id="shop-search" placeholder="Search for shops...">
-                <ul id="shop-list">
-                    <li class="shop-item">Shop 1: Clothing</li>
-                    <li class="shop-item">Shop 2: Electronics</li>
-                    <li class="shop-item">Shop 3: Groceries</li>
-                    <!-- Добавьте больше магазинов здесь -->
+                <ul class="shop-list" id="shop-list">
+                    <!-- Each shop is displayed as a list item with data attributes for filtering -->
+                    <li class="shop-item" data-category="clothing" data-floor="1" data-taxfree="true">
+                        <img src="/images/event1.jpg" alt="Boggi Milano" class="shop-image">
+                        <h3 class="shop-name">BOGGI MILANO <span class="new-label">НОВЫЙ</span></h3>
+                        <p class="shop-category">Мужская одежда, Одежда, обувь и сумки</p>
+                        <button class="view-details">Подробнее</button>
+                    </li>
+                    <li class="shop-item" data-category="beauty" data-floor="2" data-taxfree="false">
+                        <img src="/images/event2.jpg" alt="By Kaori" class="shop-image">
+                        <h3 class="shop-name">BY KAORI <span class="new-label">НОВЫЙ</span></h3>
+                        <p class="shop-category">Красота и здоровье, Парфюмерия и косметика</p>
+                        <button class="view-details">Подробнее</button>
+                    </li>
+                    <!-- Additional shop items with respective data attributes -->
                 </ul>
             </div>
         </section>
     </main>
-
-    <!-- Footer -->
-    <%- include('partials/footer') %>
 
     <script src="/js/app.js"></script>
 </body>

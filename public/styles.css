@@ -1,6 +1,12 @@
-/* Основные стили */
+/* General Styles */
+* {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     color: #333;
     margin: 0;
@@ -12,12 +18,52 @@ a {
     color: inherit;
 }
 
-/* Навигационная панель */
-.header {
-    background-color: #212529;
-    padding: 1rem 0;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
+/* Header Styles */
+.header {
+    position: relative;
+    background-image: url('/images/main.jpg'); /* Replace with actual background image */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.header .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 40px 0;
+}
+
+.breadcrumb {
+    font-size: 0.9em;
+    color: #ddd;
+    margin-bottom: 15px;
+}
+
+.title {
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.event-count, .shop-count {
+    background-color: #ffd700;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* Navigation Bar */
 .header-container {
     display: flex;
     justify-content: space-between;
@@ -46,12 +92,7 @@ a {
     color: #ff6f61;
 }
 
-.header-right p {
-    color: white;
-    margin: 0;
-}
-
-/* Геройский баннер */
+/* Hero Banner */
 .hero-banner {
     background-color: #212529;
     padding: 4rem 0;
@@ -82,106 +123,163 @@ a {
     background-color: #ff3b2f;
 }
 
-/* Карусель */
-.carousel-item {
-    height: 75vh;
-    background-color: #333;
-    color: white;
-    position: relative;
-}
-
-.carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.8;
-}
-
-.carousel-caption {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.6);
-    padding: 1.5rem;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 700px;
-}
-
-.carousel-caption h5 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.carousel-caption p {
-    font-size: 1.2rem;
-}
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-    background-color: #000;
-    border-radius: 50%;
-    padding: 10px;
-    opacity: 0.7;
-}
-
-.carousel-control-prev-icon:hover,
-.carousel-control-next-icon:hover {
-    opacity: 1;
-}
-
-/* Сегодня в кино */
-.movies {
-    padding: 3rem 0;
-    background-color: #2c2c3a;
-}
-
-.movies h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-}
-
-.movie-grid {
+/* Search and Filter Controls */
+.search-container {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    align-items: center;
+    gap: 10px;
     flex-wrap: wrap;
+    margin-top: 20px;
 }
 
-.movie-item {
-    background-color: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 200px;
-    text-align: center;
+.search-bar {
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    width: 300px;
+    transition: all 0.3s ease;
 }
 
-.movie-item img {
-    width: 100%;
-    height: auto;
+.search-bar:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.search-button {
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 50%;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.category-select, .floor-select, .sort-button, .view-toggle button {
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+.sort-button:hover, .category-select:hover, .floor-select:hover {
+    background-color: #e0e0e0;
+}
+
+/* View Toggle */
+.view-toggle {
+    display: flex;
+    gap: 5px;
+}
+
+.view-toggle button {
+    background-color: #007bff;
+    color: white;
+    font-size: 1em;
+    border-radius: 5px;
+    padding: 8px 12px;
+}
+
+.view-toggle .active {
+    background-color: #0056b3;
+}
+
+/* Shop & Event Card Section */
+.shop-section, .event-section {
+    padding: 40px 20px;
+}
+
+.shop-list, .event-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.shop-list.list-view, .event-list.list-view {
+    grid-template-columns: 1fr; /* Single column for list view */
+    gap: 15px;
+}
+
+/* Shop & Event Item Styling */
+.shop-item, .event-item {
+    background-color: #ffffff;
     border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.movie-item h3 {
-    margin: 1rem 0;
-    font-size: 1.25rem;
-}
-
-.movie-item p {
-    font-size: 1rem;
-    color: #666;
-}
-
-.movie-item:hover {
+.shop-item:hover, .event-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Футер */
+.image-container {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.shop-image, .event-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the container and is cropped if necessary */
+}
+
+.shop-name, .event-name {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.shop-category, .event-category {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.new-label, .event-label {
+    background-color: #ff6f00;
+    color: white;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+.view-details {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    border: none;
+    border-radius: 25px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-details:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
 .footer {
     background-color: #212529;
     color: white;
@@ -194,11 +292,6 @@ a {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 2rem;
-}
-
-.footer-left, .footer-right {
-    flex: 1;
-    min-width: 250px;
 }
 
 .footer h3 {
@@ -225,56 +318,7 @@ a {
     text-decoration: underline;
 }
 
-/* Общие эффекты */
-button, .btn, a {
-    cursor: pointer;
-}
-
-/* Основные стили */
-body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #2c2c3a;
-    color: #2c2c3a;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-h2 {
-    font-size: 2.5rem;
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.see-all {
-    color: #00b8ff;
-    text-decoration: none;
-    font-weight: 700;
-    display: table;
-    margin-bottom: 16px;
-    margin-top: 20px;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-.see-all:hover {
-    color: #008ac4;
-}
-
-.h2_movie{
-    display: table-cell;
-    color: #fff;
-    font-size: 2.5rem;
-    display: ruby;
-    margin-bottom: 18px;
-}
-
-/* Сетка фильмов */
+/* Movie Grid Specific */
 .movie-grid {
     display: flex;
     flex-wrap: wrap;
@@ -289,7 +333,7 @@ h2 {
     overflow: hidden;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: calc(20% - 15px); /* Расчет для равномерного распределения 5 карточек */
+    width: calc(20% - 15px);
 }
 
 .movie-item img {
@@ -312,11 +356,669 @@ h2 {
     transform: translateY(-10px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
+/* General Body Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
 
-/* Адаптивность для мобильных устройств */
+/* Event and Shop List Container */
+.event-section, .shop-section {
+    padding: 40px 20px;
+}
+
+.event-list, .shop-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Card Container Styling */
+.event-item, .shop-item {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    width: 270px; /* Increased width for more prominent display */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-item:hover, .shop-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Container for Consistent Size */
+.image-container {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.event-image, .shop-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.event-item:hover .event-image, .shop-item:hover .shop-image {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Card Content */
+.event-name, .shop-name {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #333;
+    margin: 10px 0;
+}
+
+.event-category, .shop-category {
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+/* Label Styling */
+.event-label, .new-label {
+    background-color: #ff6f61;
+    color: white;
+    font-size: 0.75em;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-top: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Button Styling */
+.view-details {
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: auto;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.view-details:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+/* Card Container Styling */
+.event-item, .shop-item {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    width: 270px; /* Set card width */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-item:hover, .shop-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Container for Consistent Size with Rounded Corners */
+.image-container {
+    width: 100%; /* Full width of the card */
+    height: 180px; /* Fixed height for consistency */
+    overflow: hidden;
+    border-radius: 12px; /* Rounded corners */
+    margin-bottom: 15px;
+}
+
+.event-image, .shop-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crop image to fit container */
+    border-radius: 12px; /* Matches container's rounded corners */
+    transition: transform 0.3s ease;
+}
+
+.event-item:hover .event-image, .shop-item:hover .shop-image {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Content Styling */
+.event-name, .shop-name {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #333;
+    margin: 10px 0;
+}
+
+.event-category, .shop-category {
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    margin-top: 8px;
+}
+
+/* Label Styling */
+.event-label, .new-label {
+    background-color: #ff6f61;
+    color: white;
+    font-size: 0.75em;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Button Styling */
+.view-details {
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: auto;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.view-details:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+/* Section Heading */
+.h2_movie {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.see-all {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.see-all:hover {
+    color: #0056b3;
+}
+
+/* Movie Grid Styling */
+.movie-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+}
+
+.movie-item {
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: calc(20% - 15px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.movie-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Styling */
+.movie-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0; /* Rounded top corners only */
+    margin-bottom: 10px;
+}
+
+/* Movie Title */
+.movie-item h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 10px 0 5px;
+}
+
+/* Movie Genre */
+.movie-item p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+/* Movie Grid Styling */
+.movie-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Reduced spacing between cards */
+    justify-content: space-between;
+}
+
+.movie-item {
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: calc(20% - 10px); /* Adjusted width to fit the reduced gap */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.movie-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Styling */
+.movie-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 10px;
+}
+
+/* Movie Title */
+.movie-item h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin: 10px 0 5px;
+}
+
+/* Movie Genre */
+.movie-item p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .movie-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .movie-item {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+/* General Styling */
+body {
+    background-color: #2c2e3e;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Section Title */
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: #ff4081;
+    margin-top: 0.5rem;
+}
+
+/* Event Grid */
+.event-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+    padding: 0 0px;
+}
+
+/* Event Item Styling */
+.event-item {
+    position: relative;
+    width: 150px; /* Adjust the width of each rectangle */
+    height: 100px; /* Adjust the height of each rectangle */
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Full-Image Styling */
+.event-items img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container */
+    display: block;
+}
+/* Categories Section */
+.categories-section {
+    text-align: center;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Larger gap for spacing between buttons */
+    flex-wrap: wrap;
+}
+
+/* General Button Styling */
+.category-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    width: 180px; /* Larger width */
+    height: 80px; /* Larger height */
+    border-radius: 12px; /* Rounded corners for a modern look */
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    text-align: center;
+}
+
+/* Hover Effect */
+.category-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Colors with Gradients */
+.category-shops {
+    background: linear-gradient(135deg, #ff4081, #e91e63); /* Pink gradient */
+}
+
+.category-services {
+    background: linear-gradient(135deg, #7b1fa2, #9c27b0); /* Purple gradient */
+}
+
+.category-entertainment {
+    background: linear-gradient(135deg, #03a9f4, #0288d1); /* Blue gradient */
+}
+
+.category-events {
+    background: linear-gradient(135deg, #4caf50, #388e3c); /* Green gradient */
+}
+
+/* Count Bubble Styling */
+.category-btn span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 5px;
+    display: block; /* Display count below the text */
+    opacity: 0.9;
+}
+
+/* Title Overlay */
+.event-title-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 5px 0;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+    color: #ffffff;
+    font-size: 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 0 0 8px 8px; /* Rounded bottom corners to match card */
+}
+.event-items {
+    position: relative;
+    width: 150px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Categories Section */
+.categories-section {
+    text-align: right; /* Align section to the right */
+}
+
+.categories {
+    display: flex;
+    gap: 20px; /* Spacing between buttons */
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Align items to the right */
+}
+
+/* General Button Styling */
+.category-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    width: 180px;
+    height: 60px;
+    border-radius: 12px;
+    text-decoration: none;
+    padding: 10px 20px; /* Padding inside button */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.category-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Colors with Gradients */
+.category-shops {
+    background: linear-gradient(135deg, #ff4081, #e91e63);
+}
+
+.category-services {
+    background: linear-gradient(135deg, #7b1fa2, #9c27b0);
+}
+
+.category-entertainment {
+    background: linear-gradient(135deg, #03a9f4, #0288d1);
+}
+
+.category-events {
+    background: linear-gradient(135deg, #4caf50, #388e3c);
+}
+
+/* Count Circle Styling */
+.category-btn span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 700;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%; /* Makes the span a circle */
+    margin-left: 10px; /* Space between text and circle */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for emphasis */
+}
+/* Categories Section */
+.categories-section {
+    text-align: left; /* Align section to the left */
+}
+
+.categories {
+    display: flex;
+    gap: 15px; /* Spacing between buttons */
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items to the left */
+}
+
+.container::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background-color: #ff4081;
+    margin-top: 0.5rem;
+}
+/* General Button Styling */
+.category-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    width: 160px; /* Adjust width for a compact look */
+    height: 60px; /* Adjust height */
+    border-radius: 12px; /* Rounded corners for a modern look */
+    text-decoration: none;
+    padding: 10px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.category-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Colors with Gradients */
+.category-shops {
+    background: linear-gradient(135deg, #ff4081, #e91e63); /* Pink gradient */
+}
+
+.category-services {
+    background: linear-gradient(135deg, #7b1fa2, #9c27b0); /* Purple gradient */
+}
+
+.category-entertainment {
+    background: linear-gradient(135deg, #03a9f4, #0288d1); /* Blue gradient */
+}
+
+.category-events {
+    background: linear-gradient(135deg, #4caf50, #388e3c); /* Green gradient */
+}
+
+/* Count Circle Styling */
+.category-btn span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-size: 0.85rem;
+    font-weight: 700;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%; /* Makes the span a circle */
+    margin-left: 10px; /* Space between text and circle */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Slight shadow for emphasis */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .event-grid {
+        justify-content: center;
+    }
+
+    .event-item {
+        width: 120px;
+        height: 80px;
+    }
+
+    .event-title-overlay {
+        font-size: 0.7rem;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .movie-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .movie-item {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .event-list, .shop-list {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .movie-item {
-        width: calc(50% - 15px); /* Две карточки в ряд на мобильных */
+        width: calc(50% - 15px); /* Two columns on smaller screens */
     }
 
     h2 {

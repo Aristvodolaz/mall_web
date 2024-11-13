@@ -3,38 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Mall - Events</title>
+    <title>Кристалл - Развлечения</title>
     <link rel="stylesheet" href="/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <!-- Header with Background Image -->
-    <header class="header">
-        <div class="overlay">
-            <nav class="breadcrumb">
-                <a href="#">Главная</a> > <span>События</span>
+    <header class="event-page-header">
+        <div class="event-page-overlay">
+            <nav class="event-page-breadcrumb">
+                <a href="#">Главная</a> > <span>Развлечения</span>
             </nav>
-            <h1 class="title">СОБЫТИЯ</h1>
-            <p class="event-count">5 событий</p>
-            <div class="search-container">
-                <input type="text" id="event-search" class="search-bar" placeholder="Поиск события">
+            <h1 class="event-page-title">Развлечения</h1>
+            <p class="event-page-count">5 развлечений</p>
+            <div class="event-page-search-container">
+                <input type="text" id="event-page-search" class="event-page-search-bar" placeholder="Поиск события">
                 <button class="search-button">
                     <i class="fas fa-search"></i>
                 </button>
-                <select class="category-select">
-                    <option>Выбрать категорию</option>
-                    <option>Скидки</option>
+ <select id="category-select" class="category-select">
+                        <option>Выбрать категорию</option>
+                    <option>Квизы</option>
                     <option>Концерты</option>
-                    <option>Открытия магазинов</option>
-                    <!-- Add more categories as needed -->
+                    <option>Выставки</option>
                 </select>
-                <button class="sort-button">
+                <button class="event-page-sort-button">
                     А-Я <i class="fas fa-sort-alpha-down"></i>
                 </button>
-                <div class="view-toggle">
-                    <button class="grid-view active"><i class="fas fa-th"></i></button>
-                    <button class="list-view"><i class="fas fa-list"></i></button>
+                <div class="event-page-view-toggle">
+                    <button class="event-page-grid-view active"><i class="fas fa-th"></i></button>
+                    <button class="event-page-list-view"><i class="fas fa-list"></i></button>
                 </div>
             </div>
         </div>
@@ -42,37 +41,35 @@
 
     <!-- Main Content with Event Cards -->
     <main>
-        <section class="event-section">
-            <div class="container">
-                <ul class="event-list" id="event-list">
+        <section class="event-page-section">
+            <div class="event-page-container">
+                <ul class="event-page-list" id="event-page-list">
                     <!-- Each event card -->
-                    <li class="event-item">
-                        <img src="/images/event1.jpg" alt="Summer Sale" class="event-image">
-                        <h3 class="event-name">Summer Sale</h3>
-                        <p class="event-label">СКОРО</p>
-                        <p class="event-category">Скидки</p>
-                        <button class="view-details">Подробнее</button>
+                    <li class="event-page-item">
+                        <img src="/images/event1.jpg" alt="Summer Sale" class="event-page-image">
+                        <h3 class="event-page-name">Summer Sale</h3>
+                        <p class="event-page-label">СКОРО</p>
+                        <p class="event-page-category">Скидки</p>
+                        <button class="event-page-details-button">Подробнее</button>
                     </li>
-                    <li class="event-item">
-                        <img src="/images/event2.jpg" alt="Concert at the Mall" class="event-image">
-                        <h3 class="event-name">Concert at the Mall</h3>
-                        <p class="event-label">СКОРО</p>
-                        <p class="event-category">Концерты</p>
-                        <button class="view-details">Подробнее</button>
+                    <li class="event-page-item">
+                        <img src="/images/event2.jpg" alt="Concert at the Mall" class="event-page-image">
+                        <h3 class="event-page-name">Concert at the Mall</h3>
+                        <p class="event-page-label">СКОРО</p>
+                        <p class="event-page-category">Концерты</p>
+                        <button class="event-page-details-button">Подробнее</button>
                     </li>
-                    <li class="event-item">
-                        <img src="/images/event3.jpg" alt="New Store Opening" class="event-image">
-                        <h3 class="event-name">New Store Opening</h3>
-                        <p class="event-label">ОТКРЫТИЕ</p>
-                        <p class="event-category">Открытия магазинов</p>
-                        <button class="view-details">Подробнее</button>
+                    <li class="event-page-item">
+                        <img src="/images/event3.jpg" alt="New Store Opening" class="event-page-image">
+                        <h3 class="event-page-name">New Store Opening</h3>
+                        <p class="event-page-label">ОТКРЫТИЕ</p>
+                        <p class="event-page-category">Открытия магазинов</p>
+                        <button class="event-page-details-button">Подробнее</button>
                     </li>
-                    <!-- Add more event cards as needed -->
                 </ul>
             </div>
         </section>
     </main>
-    
 
     <!-- Footer -->
     <%- include('partials/footer') %>

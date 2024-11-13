@@ -3,32 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Mall - Map</title>
+    <title>Shopping Mall - Map & Contacts</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        /* Map page header and general layout */
+        .map-page-header {
+            background: url('/images/main.jpg') center/cover no-repeat;
+            color: #fff;
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 3px solid #00aaff;
+            position: relative;
+        }
+
+        .map-page-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .map-page-header h1,
+        .map-page-header p {
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+            color: #333;
+        }
+
+        #map {
+            height: 500px;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hours of Operation and Contacts Section */
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .hours, .departments {
+            background: #f5f7fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 48%;
+        }
+
+        .hours h2, .departments h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .hours .time-entry, .departments .contact-entry {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 1.1em;
+        }
+
+        .hours .time-entry:last-child, .departments .contact-entry:last-child {
+            border-bottom: none;
+        }
+
+        .hours .time-entry span, .departments .contact-entry a {
+            color: #007bff;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .contact-entry a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header -->
-    <%- include('partials/header') %>
+    <header class="map-page-header">
+        <h1>Наше местоположение</h1>
+        <p>Посетите нас и насладитесь шопингом и развлечениями!</p>
+    </header>
 
-    <main>
-        <section>
-            <div class="container">
-                <h2>Our Map</h2>
-                <div id="map" style="height: 500px;"></div>
+    <main class="container">
+        <div id="map"></div>
+
+        <div class="info-section">
+            <div class="hours">
+                <h2>График работы</h2>
+                <div class="time-entry">
+                    <div>ТРЦ "Кристалл"</div>
+                    <div>Пн – Вс: <span>10:00 – 22:00</span></div>
+                </div>
+                <div class="time-entry">
+                    <div>Гипермаркет "Лента"</div>
+                    <div><span>Круглосуточно</span></div>
+                </div>
+                <div class="time-entry">
+                    <div>Ресторан "Di Marko"</div>
+                    <div>Пн – Вс: <span>12:00 – 22:00</span></div>
+                </div>
             </div>
-        </section>
+
+            <!-- Department Contacts Section -->
+            <div class="departments">
+                <h2>Контакты отделов</h2>
+                <div class="contact-entry">
+                    <div>Отдел аренды</div>
+                    <a href="mailto:arenda@trc-europesk.ru">arenda@trc-europesk.ru</a>
+                </div>
+                <div class="contact-entry">
+                    <div>Отдел рекламы</div>
+                    <a href="mailto:reklama@trc-europesk.ru">reklama@trc-europesk.ru</a>
+                </div>
+                <div class="contact-entry">
+                    <div>Отдел маркетинга</div>
+                    <a href="mailto:marketing@trc-europesk.ru">marketing@trc-europesk.ru</a>
+                </div>
+            </div>
+        </div>
     </main>
-
-    <!-- Footer -->
     <%- include('partials/footer') %>
-
     <script>
-        const map = L.map('map').setView([51.505, -0.09], 13);
+        // Initialize the map
+        const map = L.map('map').setView([53.2427, 34.3654], 15);
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
+
+        const mallMarker = L.marker([53.2427, 34.3654]).addTo(map);
+        mallMarker.bindPopup("<b>ТРЦ Кристалл</b><br>Дятьково, ул. Объездная, д. 30, 32").openPopup();
     </script>
+ 
+
 </body>
 </html>

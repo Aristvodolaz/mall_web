@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= movie.title %> - Детали фильма</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        .movie-header {
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('<%= movie.image %>');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .movie-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .movie-card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-top: -50px;
+        }
+
+        .movie-card img {
+            border-radius: 15px;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .movie-details h3 {
+            font-size: 1.8rem;
+            margin-top: 20px;
+            font-weight: 700;
+        }
+
+        .movie-details p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .btn-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .btn-movies,
+        .btn-book {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 25px;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: 0.3s ease-in-out;
+        }
+
+        .btn-movies {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+
+        .btn-movies:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-book {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+        }
+
+        .btn-book:hover {
+            background-color: #e05500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Фон с заголовком фильма -->
+    <header class="movie-header">
+        <h1><%= movie.title %></h1>
+        <p><i class="fas fa-film"></i> <strong>Жанр:</strong> <%= movie.genre %></p>
+    </header>
+
+    <!-- Детальная информация о фильме -->
+    <main class="container mt-5">
+        <div class="movie-card">
+            <div class="row g-4">
+                <div class="col-md-5">
+                    <img src="<%= movie.image %>" alt="<%= movie.title %>" class="w-100">
+                </div>
+                <div class="col-md-7 movie-details">
+                    <h3>Описание</h3>
+                    <p><%= movie.description %></p>
+
+                    <div class="btn-container">
+                        <a href="/movies" class="btn-movies">Вернуться к списку</a>
+                        <a href="/reserve?eventName=<%= movie.title %>" class="btn-book">Забронировать билет</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer bg-dark text-white mt-5 p-4 text-center">
+        <p>© 2024 ТРЦ Кристалл | Все права защищены | <a href="/" class="text-warning">На главную</a></p>
+    </footer>
+
+    <!-- Подключение Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

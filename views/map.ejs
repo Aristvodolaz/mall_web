@@ -17,7 +17,15 @@
             border-bottom: 3px solid #00aaff;
             position: relative;
         }
-
+        .breadcrumb {
+    font-size: 0.9em;
+    color: #ddd;
+    margin-bottom: 15px;
+    text-align: center;  /* Центровка текста */
+    display: inline-block;  /* Позволяет автоцентрировать */
+    margin-left: auto;  /* Центровка по горизонтали */
+    margin-right: auto; /* Центровка по горизонтали */
+}
         .map-page-header::before {
             content: "";
             position: absolute;
@@ -96,6 +104,9 @@
 </head>
 <body>
     <header class="map-page-header">
+
+        <a href="#" onclick="window.location.href = '/'">Главная</a>  > <span>Развлечения</span>
+
         <h1>Наше местоположение</h1>
         <p>Посетите нас и насладитесь шопингом и развлечениями!</p>
     </header>
@@ -138,7 +149,36 @@
             </div>
         </div>
     </main>
-    <%- include('partials/footer') %>
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Контакты -->
+        <div class="footer-column">
+            <h4>Контакты</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Брянск, ул. Объездная, д. 30, 32</p>
+            <p><i class="fas fa-phone-alt"></i> +7 (123) 456-78-90</p>
+            <p><i class="fas fa-envelope"></i> info@kristall.ru</p>
+            <p>Режим работы: 10:00 - 22:00</p>
+        </div>
+        <!-- Социальные сети -->
+       
+        <!-- О нас -->
+        <div class="footer-column">
+            <h4>Полезные ссылки</h4>
+            <ul>
+                <li><a href="/map">О торговом центре</a></li>
+                <li><a href="/vacancies">Вакансии</a></li>
+                <li><a href="/rental">Заявка на аренду</a></li>
+                <li><a href="/privacy">Политика конфиденциальности</a></li>
+            </ul>
+        </div>
+    
+    </div>
+    <div class="footer-bottom">
+        <hr>
+        <p>© 2024 ТРЦ Кристалл | Все права защищены</p>
+    </div>
+</footer>
     <script>
         // Initialize the map
         const map = L.map('map').setView([53.2427, 34.3654], 15);
@@ -149,6 +189,11 @@
 
         const mallMarker = L.marker([53.2427, 34.3654]).addTo(map);
         mallMarker.bindPopup("<b>ТРЦ Кристалл</b><br>Дятьково, ул. Объездная, д. 30, 32").openPopup();
+
+        document.querySelector('a[href="/"]').addEventListener('click', (e) => {
+    e.preventDefault();  // Это предотвращает переход по ссылке
+});
+
     </script>
  
 

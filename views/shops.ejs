@@ -4,46 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Mall - Our Shops</title>
-    <link rel="stylesheet" href="/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .header {
+            background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/images/main.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .search-container {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .search-bar {
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: none;
+            width: 250px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-button, .sort-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .category-select, .floor-select {
+            padding: 10px;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .shop-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 40px 0;
+        }
+
+        .shop-item {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: calc(33.333% - 20px);
+            max-width: 300px;
+            transition: transform 0.3s ease;
+        }
+
+        .shop-item:hover {
+            transform: scale(1.05);
+        }
+
+        .shop-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .shop-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .shop-category {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .new-label {
+            background-color: #ff6600;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .view-details {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin: 0 auto 15px auto;
+            display: block;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-details:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
 </head>
 <body>
-    <!-- Header Section with Background Image -->
+    <!-- Header Section -->
     <header class="header">
         <div class="overlay">
             <nav class="breadcrumb">
-                <a href="#">Главная</a> > <span>Магазины</span>
+                <a href="/">Главная</a> > <span>Магазины</span>
             </nav>
             <h1 class="title">Магазины</h1>
-            <p class="shop-count">396 магазинов</p>
+            <p class="shop-count">Всего магазинов: <span id="shop-count"></span></p>
             <div class="search-container">
                 <input type="text" id="shop-search" class="search-bar" placeholder="Поиск магазина">
-                <button class="search-button">
-                    <i class="fas fa-search"></i>
-                </button>
-                <!-- Category Filter Dropdown -->
-                <select id="category-select" class="category-select">
+                <button class="search-button" onclick="filterShops()">Поиск</button>
+                <select id="category-select" class="category-select" onchange="filterShops()">
                     <option value="all">Выбрать категорию</option>
                     <option value="clothing">Одежда</option>
                     <option value="beauty">Красота и здоровье</option>
                     <option value="electronics">Электроника</option>
                     <option value="groceries">Продукты</option>
-                    <!-- Add more categories as needed -->
                 </select>
-                <!-- Floor Filter Dropdown -->
-                <select id="floor-select" class="floor-select">
+                <select id="floor-select" class="floor-select" onchange="filterShops()">
                     <option value="all">Этаж</option>
                     <option value="1">1 этаж</option>
                     <option value="2">2 этаж</option>
                     <option value="3">3 этаж</option>
-                    <!-- Add more floors as needed -->
                 </select>
-              
-                <button class="sort-button">
-                    А-Я <i class="fas fa-sort-alpha-down"></i>
-                </button>
-                          
+                <button class="sort-button" onclick="sortShops()">А-Я <i class="fas fa-sort-alpha-down"></i></button>
             </div>
         </div>
     </header>
@@ -52,26 +162,103 @@
     <main>
         <section class="shop-section">
             <div class="container">
-                <ul class="shop-list" id="shop-list">
-                    <!-- Each shop is displayed as a list item with data attributes for filtering -->
-                    <li class="shop-item" data-category="clothing" data-floor="1" data-taxfree="true">
-                        <img src="/images/event1.jpg" alt="Boggi Milano" class="shop-image">
-                        <h3 class="shop-name">BOGGI MILANO <span class="new-label">НОВЫЙ</span></h3>
-                        <p class="shop-category">Мужская одежда, Одежда, обувь и сумки</p>
-                        <button class="view-details">Подробнее</button>
-                    </li>
-                    <li class="shop-item" data-category="beauty" data-floor="2" data-taxfree="false">
-                        <img src="/images/event2.jpg" alt="By Kaori" class="shop-image">
-                        <h3 class="shop-name">BY KAORI <span class="new-label">НОВЫЙ</span></h3>
-                        <p class="shop-category">Красота и здоровье, Парфюмерия и косметика</p>
-                        <button class="view-details">Подробнее</button>
-                    </li>
-                    <!-- Additional shop items with respective data attributes -->
-                </ul>
+                <ul class="shop-list" id="shop-list"></ul>
             </div>
         </section>
     </main>
 
-    <script src="/js/app.js"></script>
+ <!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Контакты -->
+        <div class="footer-column">
+            <h4>Контакты</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Брянск, ул. Объездная, д. 30, 32</p>
+            <p><i class="fas fa-phone-alt"></i> +7 (123) 456-78-90</p>
+            <p><i class="fas fa-envelope"></i> info@kristall.ru</p>
+            <p>Режим работы: 10:00 - 22:00</p>
+        </div>
+        <!-- Социальные сети -->
+        <div class="footer-column">
+            <h4>Социальные сети</h4>
+            <p>Следите за нами:</p>
+            <div class="social-icons">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-instagram"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-youtube"></a>
+            </div>
+        </div>
+        <!-- О нас -->
+        <div class="footer-column">
+            <h4>Полезные ссылки</h4>
+            <ul>
+                <li><a href="/map">О торговом центре</a></li>
+                <li><a href="/vacancies">Вакансии</a></li>
+                <li><a href="/rental">Заявка на аренду</a></li>
+                <li><a href="/privacy">Политика конфиденциальности</a></li>
+            </ul>
+        </div>
+    
+    </div>
+    <div class="footer-bottom">
+        <hr>
+        <p>© 2024 ТРЦ Кристалл | Все права защищены</p>
+    </div>
+</footer>
+
+
+    <!-- JavaScript for rendering shops and filtering -->
+    <script>
+        const shops = [
+            { id: 1, name: 'BOGGI MILANO', category: 'clothing', floor: '1', image: '/images/event1.jpg', description: 'Мужская одежда', isNew: true },
+            { id: 2, name: 'BY KAORI', category: 'beauty', floor: '2', image: '/images/event2.jpg', description: 'Красота и здоровье', isNew: false },
+            { id: 3, name: 'Samsung Store', category: 'electronics', floor: '3', image: '/images/event3.jpg', description: 'Электроника' },
+            { id: 4, name: 'Zara', category: 'clothing', floor: '1', image: '/images/event1.jpg', description: 'Одежда для мужчин и женщин', isNew: false }
+        ];
+
+        function renderShops(shopList) {
+            const shopListContainer = document.getElementById('shop-list');
+            shopListContainer.innerHTML = '';
+            shopList.forEach(shop => {
+                shopListContainer.innerHTML += `
+                    <li class="shop-item" data-category="${shop.category}" data-floor="${shop.floor}">
+                        <img src="${shop.image}" alt="${shop.name}" class="shop-image">
+                        <h3 class="shop-name">${shop.name} ${shop.isNew ? '<span class="new-label">НОВЫЙ</span>' : ''}</h3>
+                        <p class="shop-category">${shop.description}</p>
+                        <button class="view-details" onclick="goToShopDetails(${shop.id})">Подробнее</button>
+                    </li>
+                `;
+            });
+            document.getElementById('shop-count').innerText = shopList.length;
+        }
+
+        function goToShopDetails(shopId) {
+            window.location.href = `/shops/${shopId}`;
+        }
+
+        function filterShops() {
+            const searchQuery = document.getElementById('shop-search').value.toLowerCase();
+            const selectedCategory = document.getElementById('category-select').value;
+            const selectedFloor = document.getElementById('floor-select').value;
+
+            const filteredShops = shops.filter(shop => {
+                return (
+                    shop.name.toLowerCase().includes(searchQuery) &&
+                    (selectedCategory === 'all' || shop.category === selectedCategory) &&
+                    (selectedFloor === 'all' || shop.floor === selectedFloor)
+                );
+            });
+
+            renderShops(filteredShops);
+        }
+
+        function sortShops() {
+            shops.sort((a, b) => a.name.localeCompare(b.name));
+            renderShops(shops);
+        }
+
+        renderShops(shops);
+    </script>
 </body>
 </html>
